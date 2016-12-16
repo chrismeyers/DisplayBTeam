@@ -12,11 +12,9 @@ public class GuiPanelManager extends JPanel {
 	JTabbedPane tabbedPanel = null;
 	LineManager lm = null;
 	
-	public GuiPanelManager(WorldWindowGLCanvas wwd) {
-		this.setPreferredSize(new Dimension(400,1000));
-		
+	public GuiPanelManager(int w, int h, WorldWindowGLCanvas wwd) {		
 		tabbedPanel = new JTabbedPane();
-		tabbedPanel.setPreferredSize(new Dimension(390,985));
+		tabbedPanel.setPreferredSize(new Dimension(w-10,h-15));
 		
     	this.add(tabbedPanel);
     	

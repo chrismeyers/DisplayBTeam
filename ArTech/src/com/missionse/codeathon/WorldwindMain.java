@@ -24,8 +24,11 @@ public class WorldwindMain extends JFrame {
 	
     public WorldwindMain()
     {
+    	int h = 1000;
+    	int w = 400;
+    	
     	gui = new JPanel();
-    	gui.setPreferredSize(new Dimension(400,1000));
+    	gui.setPreferredSize(new Dimension(w,h));
     	
         wwd = new WorldWindowGLCanvas();
         wwd.setPreferredSize(new java.awt.Dimension(1000, 1000));
@@ -33,7 +36,7 @@ public class WorldwindMain extends JFrame {
         this.getContentPane().add(wwd, java.awt.BorderLayout.CENTER);
         wwd.setModel(new BasicModel());
         
-    	gui_panel_manager = new GuiPanelManager(wwd);
+    	gui_panel_manager = new GuiPanelManager(w, h, wwd);
     	gui.add(gui_panel_manager);
         
         layerManager = new LayerManager(wwd.getModel());
