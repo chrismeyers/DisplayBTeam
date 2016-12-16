@@ -30,7 +30,7 @@ public class SearchParams extends JPanel {
 		lat_txt = new JTextField();
 		lon_txt = new JTextField();
 		
-		set_last_pos = new JButton("Capture last known position");
+		set_last_pos = new JButton("Capture last position");
 		
 		panel.add(time_lbl);
 		panel.add(time_txt);		

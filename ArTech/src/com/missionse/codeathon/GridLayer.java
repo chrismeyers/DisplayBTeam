@@ -8,15 +8,15 @@ import gov.nasa.worldwind.render.SurfaceSquare;
 
 public class GridLayer {
 	
-	private RenderableLayer gridLayer;
-	private LayerManager layerManager;
+	private RenderableLayer gridLayer = null;
+	private LayerManager layerManager = null;
 	
 	public GridLayer(LayerManager layerManager)
 	{
 		this.layerManager = layerManager;
 		this.gridLayer = new RenderableLayer();
 		this.gridLayer.addRenderable(createSquare());
-		layerManager.addLayer(this.gridLayer);
+		this.layerManager.addLayer(this.gridLayer);
 	}
 	
 	public void addShape(Renderable shape)
@@ -27,7 +27,7 @@ public class GridLayer {
 	public SurfaceSquare createSquare()
 	{
         LatLon position = new LatLon(Angle.fromDegrees(38), Angle.fromDegrees(-105));
-        return new SurfaceSquare(position, 100e3);
+        return new SurfaceSquare(position, 1000);
 	}
 	
 

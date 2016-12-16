@@ -2,15 +2,13 @@ package com.missionse.codeathon;
 
 import gov.nasa.worldwind.BasicModel;
 import gov.nasa.worldwind.awt.WorldWindowGLCanvas;
-import gov.nasa.worldwind.event.SelectListener;
-import gov.nasa.worldwind.layers.Layer;
-import gov.nasa.worldwind.layers.LayerList;
+import gov.nasa.worldwind.geom.Angle;
+import gov.nasa.worldwind.geom.LatLon;
+import gov.nasa.worldwind.geom.Position;
 import gov.nasa.worldwind.layers.ViewControlsLayer;
 import gov.nasa.worldwind.layers.ViewControlsSelectListener;
 
 import java.awt.Dimension;
-import java.awt.GridLayout;
-import java.util.Properties;
 
 import javax.swing.*;
 
@@ -20,6 +18,7 @@ public class WorldwindMain extends JFrame {
 	LayerManager layerManager = null;
 	JPanel gui = null;
 	GridLayer gridLayer = null;
+	GridGenerator gridGenerator = null;
 	
 	GuiPanelManager gui_panel_manager = null;
 	
@@ -46,6 +45,14 @@ public class WorldwindMain extends JFrame {
         ViewControlsLayer viewControlsLayer = new ViewControlsLayer();
         layerManager.addLayer(viewControlsLayer);
         wwd.addSelectListener(new ViewControlsSelectListener(wwd, viewControlsLayer));
+        
+        wwd.getView().setEyePosition(new Position(new LatLon(Angle.fromDegrees(38), Angle.fromDegrees(-105)),
+        		20000));
+        
+        gridGenerator = new GridGenerator(
+        		new Position(new LatLon(Angle.fromDegrees(38), Angle.fromDegrees(-105)), 0),
+        		wwd.getModel().getGlobe(),
+        		gridLayer);
     }
     
     public LayerManager getLayerManager()
