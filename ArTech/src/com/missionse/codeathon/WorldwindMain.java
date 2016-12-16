@@ -9,6 +9,7 @@ import gov.nasa.worldwind.layers.ViewControlsLayer;
 import gov.nasa.worldwind.layers.ViewControlsSelectListener;
 
 import java.awt.Dimension;
+import java.awt.GridLayout;
 
 import javax.swing.*;
 
@@ -19,27 +20,33 @@ public class WorldwindMain extends JFrame {
 	JPanel gui = null;
 	GridLayer gridLayer = null;
 	
+	GuiPanelManager gui_panel_manager = null;
+	
     public WorldwindMain()
     {
-    	this.gui = new JPanel();
-    	this.gui.setPreferredSize(new Dimension(400,1000));
-        this.wwd = new WorldWindowGLCanvas();
+    	gui = new JPanel();
+    	gui.setPreferredSize(new Dimension(400,1000));
+    	
+        wwd = new WorldWindowGLCanvas();
         wwd.setPreferredSize(new java.awt.Dimension(1000, 1000));
-        this.getContentPane().add(this.gui, java.awt.BorderLayout.WEST);
+        this.getContentPane().add(gui, java.awt.BorderLayout.WEST);
         this.getContentPane().add(wwd, java.awt.BorderLayout.CENTER);
         wwd.setModel(new BasicModel());
         
-        this.layerManager = new LayerManager(this.wwd.getModel());
-        this.gridLayer = new GridLayer(this.getLayerManager());
+    	gui_panel_manager = new GuiPanelManager(wwd);
+    	gui.add(gui_panel_manager, java.awt.BorderLayout.WEST);
+        
+        layerManager = new LayerManager(wwd.getModel());
+        gridLayer = new GridLayer(getLayerManager());
         
         ViewControlsLayer viewControlsLayer = new ViewControlsLayer();
         layerManager.addLayer(viewControlsLayer);
-        this.wwd.addSelectListener(new ViewControlsSelectListener(this.wwd, viewControlsLayer));
+        wwd.addSelectListener(new ViewControlsSelectListener(wwd, viewControlsLayer));
     }
     
     public LayerManager getLayerManager()
     {
-      return this.layerManager;
+      return layerManager;
     }
     
 
