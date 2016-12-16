@@ -34,7 +34,7 @@ public class WorldwindMain extends JFrame {
         wwd.setModel(new BasicModel());
         
     	gui_panel_manager = new GuiPanelManager(wwd);
-    	gui.add(gui_panel_manager, java.awt.BorderLayout.WEST);
+    	gui.add(gui_panel_manager);
         
         layerManager = new LayerManager(wwd.getModel());
         gridLayer = new GridLayer(getLayerManager());
