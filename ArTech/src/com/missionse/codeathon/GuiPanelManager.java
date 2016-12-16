@@ -11,6 +11,7 @@ import gov.nasa.worldwind.awt.WorldWindowGLCanvas;
 public class GuiPanelManager extends JPanel {
 	JTabbedPane tabbedPanel = null;
 	LineManager lm = null;
+	SearchParams sp = null;
 	
 	public GuiPanelManager(int w, int h, WorldWindowGLCanvas wwd) {		
 		tabbedPanel = new JTabbedPane();
@@ -19,7 +20,11 @@ public class GuiPanelManager extends JPanel {
     	this.add(tabbedPanel);
     	
     	lm = new LineManager(wwd, null, null);    	
-    	tabbedPanel.addTab("Paths", null, new LinePanel(wwd, lm),
+    	tabbedPanel.addTab("Trails", null, new LinePanel(wwd, lm),
+                "Important Paths");
+    	
+    	sp = new SearchParams();
+    	tabbedPanel.addTab("Parameters", null, sp,
                 "Important Paths");
 	}
 

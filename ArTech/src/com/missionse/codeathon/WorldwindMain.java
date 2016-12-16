@@ -10,6 +10,7 @@ import gov.nasa.worldwind.layers.ViewControlsSelectListener;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.util.Properties;
 
 import javax.swing.*;
 
@@ -58,7 +59,7 @@ public class WorldwindMain extends JFrame {
         java.awt.EventQueue.invokeLater(new Runnable()
         {
             public void run()
-            {
+            {            	
                 JFrame frame = new WorldwindMain();
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.pack();
