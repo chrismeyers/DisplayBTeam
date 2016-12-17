@@ -40,6 +40,11 @@ public class GridHighlighter {
                 	}
                 	
                 	Position pos = privateWWD.getCurrentPosition();
+                	
+                	if(pos == null)
+                	{
+                		return;
+                	}
                 	                	
           		    for (GridSquare g : grid)
         		    {
