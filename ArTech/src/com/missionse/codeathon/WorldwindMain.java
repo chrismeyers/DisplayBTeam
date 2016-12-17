@@ -40,7 +40,7 @@ public class WorldwindMain extends JFrame {
         this.getContentPane().add(wwd, java.awt.BorderLayout.CENTER);
         wwd.setModel(new BasicModel());
         
-        anno = new Annotations(wwd);
+        //anno = new Annotations(wwd);
         
     	gui_panel_manager = new GuiPanelManager(w, h, wwd);
     	gui.add(gui_panel_manager);
