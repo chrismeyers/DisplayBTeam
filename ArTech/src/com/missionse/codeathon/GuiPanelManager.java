@@ -33,7 +33,7 @@ public class GuiPanelManager extends JPanel {
     	tabbedPanel.addTab("Notes", null, np,
                 "Search Notes");
     	
-    	SearchResultPanel sr = new SearchResultPanel(lm, wwd);
+    	SearchResultPanel sr = new SearchResultPanel(bt, wwd);
     	tabbedPanel.addTab("Search Entry", null, sr,
                 "Search Result Entry");
 	}

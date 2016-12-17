@@ -4,6 +4,7 @@ import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -13,7 +14,7 @@ import gov.nasa.worldwind.awt.WorldWindowGLCanvas;
 import gov.nasa.worldwind.geom.Position;
 
 public class SearchResultPanel extends JPanel {
-	public SearchResultPanel(LineManager lm, WorldWindowGLCanvas wwd) {
+	public SearchResultPanel(Balltab bt, WorldWindowGLCanvas wwd) {
 		JPanel panel = new JPanel();
 		
 		panel.setLayout(new GridLayout(0,2));
@@ -31,8 +32,8 @@ public class SearchResultPanel extends JPanel {
 		lon_txt = new JTextField();
 		
 		set_last_pos = new JToggleButton("Capture search position");
-		save_btn = new JToggleButton("Save");
-		reset_btn = new JToggleButton("Reset");
+		save_btn = new JButton("Save");
+		reset_btn = new JButton("Reset");
 		
 		panel.add(lat_lbl);
 		panel.add(lat_txt);
@@ -56,7 +57,7 @@ public class SearchResultPanel extends JPanel {
             {
             	if(set_last_pos.isSelected())
 				{
-            		Position pos = lm.getBalltabPostion();
+            		Position pos = bt.getBalltabPostion();
 					if(pos != null)
 					{
 						System.out.println("set lat lon");
@@ -101,6 +102,6 @@ public class SearchResultPanel extends JPanel {
 	JTextField lat_txt;
 	JTextField lon_txt;	
 	JToggleButton set_last_pos;
-	JToggleButton save_btn;
-	JToggleButton reset_btn;
+	JButton save_btn;
+	JButton reset_btn;
 }
