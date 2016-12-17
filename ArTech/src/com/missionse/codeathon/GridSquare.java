@@ -52,7 +52,7 @@ public class GridSquare {
 	
 	public void displayTeamColor()
 	{
-		this.surfaceSquare.setVisible(false);
+		//this.surfaceSquare.setVisible(false);
 		activeDisplay = "Team";
 		if (this.teamAttribute != null)
 		{

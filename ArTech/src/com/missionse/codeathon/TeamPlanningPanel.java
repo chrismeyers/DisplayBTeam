@@ -1,8 +1,13 @@
 package com.missionse.codeathon;
 
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -12,11 +17,19 @@ import javax.swing.JTextField;
 import javax.swing.JToggleButton;
 
 import gov.nasa.worldwind.awt.WorldWindowGLCanvas;
+import gov.nasa.worldwind.geom.Position;
 
 public class TeamPlanningPanel extends JPanel {
-	public TeamPlanningPanel(WorldWindowGLCanvas wwd) {
+	private GridLayer gridLayer = null;
+	private GridGenerator gridGenerator = null;
+	private GroupHighlighter group_highlighter = null;
+	
+	
+	public TeamPlanningPanel(Balltab bt, WorldWindowGLCanvas wwd, GridLayer gridLayer) {
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridLayout(0,2));
+		
+		group_highlighter = new GroupHighlighter(wwd, gridLayer);
 		
 		teams_lbl = new JLabel("Teams: ");
 		teams_lbl.setHorizontalAlignment(JTextField.RIGHT);
@@ -54,7 +67,7 @@ public class TeamPlanningPanel extends JPanel {
 		apply_btn.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//TODO
+				
 			}
         });
 		
@@ -79,6 +92,9 @@ public class TeamPlanningPanel extends JPanel {
 
 	    public void actionPerformed(ActionEvent e) {
 	        String entered_text = (String)getSelectedItem();
+	        
+	        group_highlighter.setGroupNumber(getSelectedIndex());
+	        
 	        System.out.println("String entered: " + entered_text);
 	        
 	        for (int i=0; i < getItemCount(); i++)

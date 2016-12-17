@@ -42,7 +42,7 @@ public class GuiPanelManager extends JPanel {
     	tabbedPanel.addTab("Planning Control", null, pp,
                 "Planning Controls");
     	
-    	TeamPlanningPanel tp = new TeamPlanningPanel(wwd);
+    	TeamPlanningPanel tp = new TeamPlanningPanel(bt, wwd, gridLayer);
     	tabbedPanel.addTab("Team Planning", null, tp,
                 "Team Planning");
 	}
