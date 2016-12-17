@@ -64,6 +64,16 @@ public class TeamPlanningPanel extends JPanel {
 		
 		add(panel);
 		
+		capture_grid_btn.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(!capture_grid_btn.isSelected())
+				{
+            		group_highlighter.setGroupNumber(-1);
+				}
+			}
+        });
+
 		apply_btn.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -99,7 +109,7 @@ public class TeamPlanningPanel extends JPanel {
 	        
 	        for (int i=0; i < getItemCount(); i++)
 	        {
-	        	if (entered_text == getItemAt(i)) {
+	        	if (entered_text.equals(getItemAt(i)) || entered_text.equals("")) {
 	        		System.out.println("String already in box: " + entered_text);
 	        		//Item already in list.
 	        		return;
