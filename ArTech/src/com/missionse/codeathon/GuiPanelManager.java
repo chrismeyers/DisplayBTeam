@@ -25,7 +25,15 @@ public class GuiPanelManager extends JPanel {
     	
     	sp = new SearchParams(lm, wwd);
     	tabbedPanel.addTab("Parameters", null, sp,
-                "Important Paths");
+                "Search Parameters");
+    	
+    	NotePanel np = new NotePanel();
+    	tabbedPanel.addTab("Notes", null, np,
+                "Search Notes");
+    	
+    	SearchResultPanel sr = new SearchResultPanel(lm, wwd);
+    	tabbedPanel.addTab("Search Entry", null, sr,
+                "Search Result Entry");
 	}
 
 }
