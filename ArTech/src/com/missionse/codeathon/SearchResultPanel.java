@@ -1,6 +1,8 @@
 package com.missionse.codeathon;
 
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -67,14 +69,6 @@ public class SearchResultPanel extends JPanel {
 						set_last_pos.setSelected(false);
 					}
 				}
-            	else if (reset_btn.isSelected()) {
-            		resetTab();
-            	}
-            	else if (save_btn.isSelected()) {
-            		//TODO
-            		
-            		resetTab();
-            	}
             }
 
             public void mousePressed(MouseEvent mouseEvent)
@@ -84,6 +78,14 @@ public class SearchResultPanel extends JPanel {
             public void mouseClicked(MouseEvent mouseEvent)
             {
             }
+        });
+        
+        reset_btn.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				resetTab();
+			}
+        	
         });
 	}
 	
