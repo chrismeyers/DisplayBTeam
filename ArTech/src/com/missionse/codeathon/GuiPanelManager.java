@@ -19,11 +19,13 @@ public class GuiPanelManager extends JPanel {
 		
     	this.add(tabbedPanel);
     	
-    	lm = new LineManager(wwd, null, null);    	
+    	Balltab bt = new Balltab(wwd);
+    	
+    	lm = new LineManager(wwd, null, null, bt);    	
     	tabbedPanel.addTab("Trails", null, new LinePanel(wwd, lm),
                 "Important Paths");
     	
-    	sp = new SearchParams(lm, wwd);
+    	sp = new SearchParams(lm, wwd, bt);
     	tabbedPanel.addTab("Parameters", null, sp,
                 "Search Parameters");
     	

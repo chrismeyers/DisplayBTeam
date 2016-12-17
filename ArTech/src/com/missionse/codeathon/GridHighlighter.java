@@ -41,7 +41,7 @@ public class GridHighlighter {
                 	
                 	Position pos = privateWWD.getCurrentPosition();
                 	
-                	if(pos == null)
+                	if (pos == null)
                 	{
                 		return;
                 	}

@@ -17,10 +17,10 @@ import gov.nasa.worldwind.awt.WorldWindowGLCanvas;
 import gov.nasa.worldwind.geom.Position;
 
 public class SearchParams extends JPanel {
-	public SearchParams(LineManager lm, WorldWindowGLCanvas wwd) {
+	public SearchParams(LineManager lm, WorldWindowGLCanvas wwd, Balltab bt) {
 		this.lm = lm;
 		this.wwd = wwd;
-		
+				
 		JPanel panel = new JPanel();
 		
 		panel.setLayout(new GridLayout(0,2));
@@ -65,7 +65,7 @@ public class SearchParams extends JPanel {
             {
             	if(set_last_pos.isSelected())
 				{
-            		Position pos = lm.getBalltabPostion();
+            		Position pos = bt.getBalltabPostion();
 					if(pos != null)
 					{
 						System.out.println("set lat lon");
