@@ -40,12 +40,13 @@ public class GridGenerator {
 			LatLon point = LatLon.greatCircleEndPosition(row, Angle.fromDegrees(90),
 					Angle.fromDegrees(dist));
 			GridSquare square = new GridSquare(point, i, j);
+			square.getSquare().setVisible(false);
 			gridLayer.addShape(square.getSquare());		
 			grid.add(square);
 			
-			if (i == 1)
+			if (i == 27)
 			{
-				square.update(1);
+				square.setHasPath(true);
 			}
 		  }
 		  
@@ -54,6 +55,20 @@ public class GridGenerator {
 				  Angle.fromDegrees(distanceOneUnit));	
 		  
 		}
+		
+        Probabilities p = new Probabilities();     
+        ArrayList<GridSquare> heatMapGrid = new ArrayList<>();
+        
+        heatMapGrid = p.removeOutOfRangeCells(grid);
+        
+        p.calCellValues(heatMapGrid);
+        
+        p.normGrid(heatMapGrid);
+        
+         for(GridSquare currentCell : heatMapGrid){
+             System.out.println("currentCell.getProbablity()" + currentCell.getProbablity());
+         }
+	
 	}
 	
 	public ArrayList<GridSquare> getGridSquares()

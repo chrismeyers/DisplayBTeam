@@ -37,7 +37,7 @@ public class LineManager  extends AVListImpl {
             this.line = new Polyline();
             this.line.setFollowTerrain(true);
         }
-        line.setColor(Color.YELLOW);
+        //line.setColor(Color.YELLOW);
         
         this.layer = lineLayer != null ? lineLayer : new RenderableLayer();
         this.layer.addRenderable(this.line);

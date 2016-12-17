@@ -35,12 +35,8 @@ public class IntersectionFinder {
 		  for (GridSquare g : grid)
 		  {
 			 // System.out.println(g.getSquare().getLocations(this.globe));
-			g.setPathIntersection(WWMath.isLocationInside(pos, g.getSquare().getLocations(this.globe)));
+			g.setHasPath(WWMath.isLocationInside(pos, g.getSquare().getLocations(this.globe)));
 			
-			if(g.hasPathIntersection())
-			{
-			   System.out.println(g.hasPathIntersection());
-			}
 		  }
 		}
 		
@@ -67,9 +63,9 @@ public class IntersectionFinder {
 					//System.out.println(point);
 					for (GridSquare g : grid)
 					{
-						if (!g.hasPathIntersection())
+						if (!g.isHasPath())
 						{
-						  g.setPathIntersection(WWMath.isLocationInside(point, g.getSquare().getLocations(this.globe)));
+						  g.setHasPath(WWMath.isLocationInside(point, g.getSquare().getLocations(this.globe)));
 						}
 					}
 				}
