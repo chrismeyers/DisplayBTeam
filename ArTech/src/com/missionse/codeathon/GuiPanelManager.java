@@ -28,7 +28,7 @@ public class GuiPanelManager extends JPanel {
     	tabbedPanel.addTab("Parameters", null, sp,
                 "Search Parameters");
 
-    	tabbedPanel.addTab("Trails", null, new LinePanel(wwd, lm),
+    	tabbedPanel.addTab("Trails", null, new LinePanel(wwd, lm, this.gridLayer),
                 "Important Paths");
     	
     	//NotePanel np = new NotePanel();

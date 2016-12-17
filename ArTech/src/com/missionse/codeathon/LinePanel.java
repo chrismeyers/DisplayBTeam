@@ -32,14 +32,16 @@ public class LinePanel extends JPanel
 {
     private final WorldWindow wwd;
     private final LineManager lm;
+    private GridLayer gridLayer;
     private JButton newButton;
     private JButton pauseButton;
     private JButton endButton;
     private JLabel[] pointLabels;
 
-    public LinePanel(WorldWindow wwd, LineManager lm)
+    public LinePanel(WorldWindow wwd, LineManager lm, GridLayer gridLayer)
     {
         super(new BorderLayout());
+        this.gridLayer = gridLayer;
         this.wwd = wwd;
         this.lm = lm;
         this.makePanel(new Dimension(200, 400));
@@ -97,11 +99,13 @@ public class LinePanel extends JPanel
                 endButton.setEnabled(false);
                 ((Component) wwd).setCursor(Cursor.getDefaultCursor());
                 
-                GridLayer gridLayer = new GridLayer(new LayerManager(wwd.getModel()));
-                GridGenerator gridGenerator = new GridGenerator(
-                		new Position(new LatLon(Angle.fromDegrees(38), Angle.fromDegrees(-105)), 0),
-                		wwd.getModel().getGlobe(),
-                		gridLayer);
+                GridGenerator gridGenerator = gridLayer.getGridGenerator();
+                
+                ArrayList<GridSquare> gridSquares = gridGenerator.getGridSquares();
+                for (GridSquare g : gridSquares)
+                {
+                	g.displayProbabilityColor();
+                }
         		
                 IntersectionFinder f = new IntersectionFinder(gridGenerator.getGridSquares(), lm.getLine(), wwd.getModel().getGlobe());
                 
