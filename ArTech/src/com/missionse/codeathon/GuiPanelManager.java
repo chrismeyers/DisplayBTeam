@@ -11,8 +11,10 @@ public class GuiPanelManager extends JPanel {
 	JTabbedPane tabbedPanel = null;
 	LineManager lm = null;
 	SearchParamsPanel sp = null;
+	GridLayer gridLayer = null;
 	
-	public GuiPanelManager(int w, int h, WorldWindowGLCanvas wwd) {		
+	public GuiPanelManager(int w, int h, WorldWindowGLCanvas wwd, GridLayer gridLayer) {	
+		this.gridLayer = gridLayer;
 		tabbedPanel = new JTabbedPane();
 		tabbedPanel.setPreferredSize(new Dimension(w-10,h-15));
 		
@@ -24,7 +26,7 @@ public class GuiPanelManager extends JPanel {
     	tabbedPanel.addTab("Trails", null, new LinePanel(wwd, lm),
                 "Important Paths");
     	
-    	sp = new SearchParamsPanel(lm, wwd, bt);
+    	sp = new SearchParamsPanel(lm, wwd, bt, this.gridLayer);
     	tabbedPanel.addTab("Parameters", null, sp,
                 "Search Parameters");
     	
@@ -32,7 +34,7 @@ public class GuiPanelManager extends JPanel {
     	//tabbedPanel.addTab("Notes", null, np,
         //        "Search Notes");
     	
-    	SearchResultPanel sr = new SearchResultPanel(bt, wwd);
+    	SearchResultPanel sr = new SearchResultPanel(bt, wwd, gridLayer);
     	tabbedPanel.addTab("Search Entry", null, sr,
                 "Search Result Entry");
     	

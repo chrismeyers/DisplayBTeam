@@ -17,7 +17,11 @@ import gov.nasa.worldwind.awt.WorldWindowGLCanvas;
 import gov.nasa.worldwind.geom.Position;
 
 public class SearchParamsPanel extends JPanel {
-	public SearchParamsPanel(LineManager lm, WorldWindowGLCanvas wwd, Balltab bt) {
+	private GridLayer gridLayer = null;
+	private GridGenerator gridGenerator = null;
+	
+	public SearchParamsPanel(LineManager lm, WorldWindowGLCanvas wwd, Balltab bt, GridLayer gridLayer) {
+		this.gridLayer = gridLayer;
 		this.lm = lm;
 		this.wwd = wwd;
 				
@@ -73,6 +77,12 @@ public class SearchParamsPanel extends JPanel {
 						lat_txt.setText(String.format("%7.3f", pos.getLatitude().getDegrees()));
 						lon_txt.setText(String.format("%7.3f", pos.getLongitude().getDegrees()));
 						set_last_pos.setSelected(false);
+						
+						if (null == gridGenerator)
+						{
+							gridGenerator = new GridGenerator(pos, wwd.getModel().getGlobe(), gridLayer);
+							gridLayer.setGridGenerator(gridGenerator);
+						}
 					}
 				}
             }

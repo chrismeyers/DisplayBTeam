@@ -13,12 +13,12 @@ import gov.nasa.worldwind.util.WWMath;
 public class GridHighlighter {
 	
 	private WorldWindowGLCanvas wwd = null; 
-	private GridGenerator gg = null;
+	private GridLayer gridLayer = null;
 	
-	public GridHighlighter(WorldWindowGLCanvas wwd, GridGenerator gg)
+	public GridHighlighter(WorldWindowGLCanvas wwd, GridLayer gridLayer)
 	{
 		this.wwd = wwd;
-		this.gg = gg;
+		this.gridLayer = gridLayer;
 		setupSelection();
 	}
 
@@ -27,13 +27,22 @@ public class GridHighlighter {
         this.wwd.addSelectListener(new SelectListener()
         {
         	private WorldWindowGLCanvas privateWWD = wwd;
-        	private GridGenerator privateGG = gg;
         	
             public void selected(SelectEvent event)
             {
+            	GridGenerator gg = gridLayer.getGridGenerator();
+            	
+            	if (gg == null)
+            	{
+            		System.out.println("No grid generator");
+            		return;
+            	}
+            	
                 if (event.getEventAction().equals(SelectEvent.LEFT_CLICK))
                 {
-                	ArrayList<GridSquare> grid = privateGG.getGridSquares();
+                	System.out.println("GridHighlighter got left click ");
+
+                	ArrayList<GridSquare> grid = gg.getGridSquares();
                 	for (GridSquare g : grid)
                 	{
                 		g.clearHighlight();
@@ -43,6 +52,8 @@ public class GridHighlighter {
                 	
                 	if (pos == null)
                 	{
+                    	System.out.println("position was null");
+
                 		return;
                 	}
                 	                	

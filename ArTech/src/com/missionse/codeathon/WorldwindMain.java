@@ -40,33 +40,24 @@ public class WorldwindMain extends JFrame {
         this.getContentPane().add(wwd, java.awt.BorderLayout.CENTER);
         wwd.setModel(new BasicModel());
         
-        anno = new Annotations(wwd);
-        
-    	gui_panel_manager = new GuiPanelManager(w, h, wwd);
-    	gui.add(gui_panel_manager);
-        
         layerManager = new LayerManager(wwd.getModel());
         gridLayer = new GridLayer(getLayerManager());
+        
+        anno = new Annotations(wwd);
+        
+    	gui_panel_manager = new GuiPanelManager(w, h, wwd, this.gridLayer);
+    	gui.add(gui_panel_manager);
         
         ViewControlsLayer viewControlsLayer = new ViewControlsLayer();
         layerManager.addLayer(viewControlsLayer);
         wwd.addSelectListener(new ViewControlsSelectListener(wwd, viewControlsLayer));
         
-        wwd.getView().setEyePosition(new Position(new LatLon(Angle.fromDegrees(38), Angle.fromDegrees(-105)),
+        wwd.getView().setEyePosition(new Position(new LatLon(Angle.fromDegrees(64.2008), Angle.fromDegrees(-149.4937)),
         		200000));
-        
-        gridGenerator = new GridGenerator(
-        		new Position(new LatLon(Angle.fromDegrees(38), Angle.fromDegrees(-105)), 0),
-        		wwd.getModel().getGlobe(),
-        		gridLayer);
         
         StatusBar statusBar = new StatusBar();
         statusBar.setEventSource(wwd);
         add(statusBar, BorderLayout.SOUTH);
-        
-        //IntersectionTest intersectionTest = new IntersectionTest(this.gridGenerator, this.wwd.getModel().getGlobe(), this.gridLayer);
-    
-        //gridHighlighter = new GridHighlighter(wwd, gridGenerator);
     }
     
     public LayerManager getLayerManager()

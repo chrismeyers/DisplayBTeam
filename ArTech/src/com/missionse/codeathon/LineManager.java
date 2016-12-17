@@ -171,6 +171,7 @@ public class LineManager  extends AVListImpl {
         if (curPos == null)
             return;
 
+        System.out.println(curPos);
         this.positions.add(curPos);
         this.line.setPositions(this.positions);
         this.firePropertyChange("LineManager.AddPosition", null, curPos);
