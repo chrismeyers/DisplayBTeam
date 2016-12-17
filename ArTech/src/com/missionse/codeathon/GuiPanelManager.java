@@ -16,7 +16,7 @@ public class GuiPanelManager extends JPanel {
 	public GuiPanelManager(int w, int h, WorldWindowGLCanvas wwd, GridLayer gridLayer) {	
 		this.gridLayer = gridLayer;
 		tabbedPanel = new JTabbedPane();
-		tabbedPanel.setPreferredSize(new Dimension(w-10,h-15));
+		tabbedPanel.setPreferredSize(new Dimension(w-10,h-5));
 		
     	this.add(tabbedPanel);
     	
@@ -40,9 +40,9 @@ public class GuiPanelManager extends JPanel {
     	tabbedPanel.addTab("Search Entry", null, sr,
                 "Search Result Entry");
     	
-    	PlaybackPanel pp = new PlaybackPanel(wwd);
-    	tabbedPanel.addTab("Planning Control", null, pp,
-                "Planning Controls");
+    	//PlaybackPanel pp = new PlaybackPanel(wwd);
+    	//tabbedPanel.addTab("Planning Control", null, pp,
+        //        "Planning Controls");
     	
     	TeamPlanningPanel tp = new TeamPlanningPanel(bt, wwd, gridLayer);
     	tabbedPanel.addTab("Team Planning", null, tp,
