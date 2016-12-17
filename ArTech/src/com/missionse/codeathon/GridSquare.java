@@ -19,7 +19,7 @@ public class GridSquare {
 	int x = 0;
 	int y = 0;
 	boolean reachable = true;
-	boolean hasPath = false;
+	private boolean hasPath = false;
 	double probability = 0.0;
 	public int numLines = 0;
 

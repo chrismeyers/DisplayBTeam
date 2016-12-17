@@ -44,27 +44,27 @@ public class Probabilities {
             
             if(cell.x > getLastKnownPositionX()){
                 if(cell.x - getLastKnownPositionX() > calMaxTravalDistanceKm()){
-                    cell.reachable = false;
+                    cell.setReachable(false);
                 }
             }
             else{
                 if(getLastKnownPositionX() - cell.x > calMaxTravalDistanceKm()){
-                    cell.reachable = false;
+                    cell.setReachable(false);
                 }
             }
             if(cell.y > getLastKnownPositionY()){
                 if(cell.y - getLastKnownPositionY() > calMaxTravalDistanceKm()){
-                    cell.reachable = false;
+                    cell.setReachable(false);
                 }
             }
             else{
                 if(getLastKnownPositionY() - cell.y > calMaxTravalDistanceKm()){
-                    cell.reachable = false;
+                    cell.setReachable(false);
                 }
             }
             
             
-            if(cell.reachable){
+            if(cell.isReachable()){
                 grid.add(cell);
             }
         }
@@ -74,7 +74,7 @@ public class Probabilities {
     void calCellValues(ArrayList<GridSquare> cells){ 
         for(GridSquare currentCell : cells){
             
-            if(false == currentCell.reachable){
+            if(false == currentCell.isReachable()){
                 break;
             }
             
@@ -85,18 +85,15 @@ public class Probabilities {
                     }
                     
                     for(GridSquare checkCell : cells){
-                        if(currentCell.x-i == checkCell.x && currentCell.y-j == checkCell.y && checkCell.hasPath){
+                        if(currentCell.x-i == checkCell.x && currentCell.y-j == checkCell.y && checkCell.hasPath()){
                             currentCell.numLines++;
                         }
                     }
                 }
             }
         }   
-        
-        
-        
-        
     }
+
     
     double normalization(double valueToNormalize, double maxValue, double dataLow, double max, double min){
        // return max + (((valueToNormalize - minValue)* (max - min)) / (maxValue - minValue)); 

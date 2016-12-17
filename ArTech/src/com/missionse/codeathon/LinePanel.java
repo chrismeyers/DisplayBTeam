@@ -104,6 +104,12 @@ public class LinePanel extends JPanel
                 		gridLayer);
         		
                 IntersectionFinder f = new IntersectionFinder(gridGenerator.getGridSquares(), lm.getLine(), wwd.getModel().getGlobe());
+                
+                Probabilities p = new Probabilities();     
+                ArrayList<GridSquare> heatMapGrid = new ArrayList<>();
+                heatMapGrid = p.removeOutOfRangeCells(gridGenerator.getGridSquares());
+                p.calCellValues(heatMapGrid);
+                p.normGrid(heatMapGrid);
             }
         });
         buttonPanel.add(endButton);
