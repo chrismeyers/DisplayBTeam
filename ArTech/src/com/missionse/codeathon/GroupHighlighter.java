@@ -13,7 +13,7 @@ import gov.nasa.worldwind.util.WWMath;
 public class GroupHighlighter {
 	private WorldWindowGLCanvas wwd = null; 
 	private GridLayer gridLayer = null;
-	private int selected_team_value = 0;
+	private int selected_team_value = -1;
 	private ArrayList<Color> team_colors = null;
 	
 	public GroupHighlighter(WorldWindowGLCanvas wwd, GridLayer gridLayer)
@@ -33,7 +33,7 @@ public class GroupHighlighter {
 			selected_team_value = (value % team_colors.size());
 		}
 		else {
-			selected_team_value = 0;
+			selected_team_value = -1;
 		}
 	}
 
@@ -56,6 +56,10 @@ public class GroupHighlighter {
                 if (event.getEventAction().equals(SelectEvent.LEFT_CLICK))
                 {
                 	System.out.println("GridHighlighter got left click ");
+                	
+                	if (selected_team_value == -1) {
+                		return;
+                	}
 
                 	ArrayList<GridSquare> grid = gg.getGridSquares();
                 	Position pos = privateWWD.getCurrentPosition();
