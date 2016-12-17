@@ -66,7 +66,7 @@ public class WorldwindMain extends JFrame {
         
         //IntersectionTest intersectionTest = new IntersectionTest(this.gridGenerator, this.wwd.getModel().getGlobe(), this.gridLayer);
     
-        gridHighlighter = new GridHighlighter(wwd, gridGenerator);
+        //gridHighlighter = new GridHighlighter(wwd, gridGenerator);
     }
     
     public LayerManager getLayerManager()

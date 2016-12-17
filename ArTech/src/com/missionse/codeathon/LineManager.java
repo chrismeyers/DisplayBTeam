@@ -25,7 +25,7 @@ public class LineManager  extends AVListImpl {
     private boolean active = false;
     private Position balltabPos; 
     
-	public LineManager(final WorldWindow wwd, RenderableLayer lineLayer, Polyline polyline) {
+	public LineManager(final WorldWindow wwd, RenderableLayer lineLayer, Polyline polyline, Balltab bt) {
 		this.wwd = wwd;
 
         if (polyline != null)
@@ -42,12 +42,12 @@ public class LineManager  extends AVListImpl {
         this.layer = lineLayer != null ? lineLayer : new RenderableLayer();
         this.layer.addRenderable(this.line);
         this.wwd.getModel().getLayers().add(this.layer);
-
+        
         this.wwd.getInputHandler().addMouseListener(new MouseAdapter()
         {
             public void mousePressed(MouseEvent mouseEvent)
             {
-            	updateBalltabPosition();
+            	bt.updateBalltabPosition();
                 
             	if (armed && mouseEvent.getButton() == MouseEvent.BUTTON1)
                 {
@@ -113,20 +113,6 @@ public class LineManager  extends AVListImpl {
                     replacePosition();
             }
         });
-	}
-	
-	private void updateBalltabPosition()
-	{
-		Position curPos = this.wwd.getCurrentPosition();
-		if(curPos != null)
-		{
-			balltabPos = curPos;
-		}
-	}
-	
-	public Position getBalltabPostion()
-	{
-		return balltabPos;
 	}
 	
 	/**
