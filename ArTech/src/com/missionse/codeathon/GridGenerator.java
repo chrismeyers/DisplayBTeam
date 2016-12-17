@@ -25,7 +25,12 @@ public class GridGenerator {
 		this.basePosition = position;
 		this.globe = globe;
 		this.grid = new ArrayList<GridSquare>();
-
+		
+		generateGrid();
+	}
+	
+	public void generateGrid()
+	{
 		double distanceRadians = ((180 * (32 * 1000) / Math.PI) / globe.getRadius());
 		LatLon westCentralPoint = LatLon.greatCircleEndPosition(this.basePosition, Angle.fromDegrees(270),
 				Angle.fromDegrees(distanceRadians));
@@ -66,13 +71,16 @@ public class GridGenerator {
         //heatMapGrid = p.removeOutOfRangeCells(grid);
         //p.calCellValues(heatMapGrid);
         //p.normGrid(heatMapGrid);
-
-	
 	}
 	
 	public ArrayList<GridSquare> getGridSquares()
 	{
 		return this.grid;
+	}
+	
+	public void updatePosition(Position pos)
+	{
+		this.basePosition = pos;
 	}
 	
 }
