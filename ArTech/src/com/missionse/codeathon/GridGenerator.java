@@ -7,6 +7,11 @@ import gov.nasa.worldwind.geom.Angle;
 import gov.nasa.worldwind.geom.LatLon;
 import gov.nasa.worldwind.geom.Position;
 import gov.nasa.worldwind.globes.Globe;
+import gov.nasa.worldwind.render.Material;
+import gov.nasa.worldwind.render.markers.BasicMarker;
+import gov.nasa.worldwind.render.markers.BasicMarkerAttributes;
+import gov.nasa.worldwind.render.markers.BasicMarkerShape;
+import gov.nasa.worldwind.render.markers.Marker;
 
 public class GridGenerator {
 
@@ -48,9 +53,14 @@ public class GridGenerator {
 		  row = LatLon.greatCircleEndPosition(new Position(row, 0), 
 				  Angle.fromDegrees(180), 
 				  Angle.fromDegrees(distanceOneUnit));	
-		  
 		}
+
+		Marker lastKnownLocation = new BasicMarker(this.basePosition, 
+				new BasicMarkerAttributes(Material.RED, BasicMarkerShape.SPHERE, .6));
 		
+		ArrayList<Marker> markerList = new ArrayList<Marker>();
+		markerList.add(lastKnownLocation);
+		gridLayer.addMarker(markerList);
         //Probabilities p = new Probabilities();     
         //ArrayList<GridSquare> heatMapGrid = new ArrayList<>();
         //heatMapGrid = p.removeOutOfRangeCells(grid);
