@@ -35,6 +35,7 @@ public class LineManager  extends AVListImpl {
         else
         {
             this.line = new Polyline();
+            this.line.setLineWidth(this.line.getLineWidth()*2.2);
             this.line.setFollowTerrain(true);
         }
         //line.setColor(Color.YELLOW);
