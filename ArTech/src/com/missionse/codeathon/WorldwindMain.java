@@ -5,8 +5,6 @@ import gov.nasa.worldwind.awt.WorldWindowGLCanvas;
 import gov.nasa.worldwind.geom.Angle;
 import gov.nasa.worldwind.geom.LatLon;
 import gov.nasa.worldwind.geom.Position;
-import gov.nasa.worldwind.layers.IconLayer;
-import gov.nasa.worldwind.layers.RenderableLayer;
 import gov.nasa.worldwind.layers.ViewControlsLayer;
 import gov.nasa.worldwind.layers.ViewControlsSelectListener;
 import gov.nasa.worldwind.util.StatusBar;
@@ -23,7 +21,7 @@ public class WorldwindMain extends JFrame {
 	JPanel gui = null;
 	GridLayer gridLayer = null;
 	GridGenerator gridGenerator = null;
-	
+	GridHighlighter gridHighlighter = null;
 	GuiPanelManager gui_panel_manager = null;
 	
 	Annotations anno = null;
@@ -64,7 +62,11 @@ public class WorldwindMain extends JFrame {
         
         StatusBar statusBar = new StatusBar();
         statusBar.setEventSource(wwd);
-        this.add(statusBar, BorderLayout.SOUTH);
+        add(statusBar, BorderLayout.SOUTH);
+        
+        IntersectionTest intersectionTest = new IntersectionTest(this.gridGenerator, this.wwd.getModel().getGlobe(), this.gridLayer);
+    
+        gridHighlighter = new GridHighlighter(wwd, gridGenerator);
     }
     
     public LayerManager getLayerManager()

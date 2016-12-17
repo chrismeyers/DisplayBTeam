@@ -154,7 +154,7 @@ public class Annotations implements SelectListener {
         }
         else if (e.getEventAction() == SelectEvent.DRAG || e.getEventAction() == SelectEvent.DRAG_END)
         {
-            this.dragger.selected(e);
+            //this.dragger.selected(e);
         }
     }
     
