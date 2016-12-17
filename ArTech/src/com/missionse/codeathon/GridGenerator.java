@@ -65,9 +65,11 @@ public class GridGenerator {
         
         p.normGrid(heatMapGrid);
         
+        /*
          for(GridSquare currentCell : heatMapGrid){
              System.out.println("currentCell.getProbablity()" + currentCell.getProbablity());
          }
+         */
 	
 	}
 	

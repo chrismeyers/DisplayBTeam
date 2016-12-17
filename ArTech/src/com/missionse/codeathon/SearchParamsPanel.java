@@ -16,8 +16,8 @@ import com.missionse.codeathon.LineManager;
 import gov.nasa.worldwind.awt.WorldWindowGLCanvas;
 import gov.nasa.worldwind.geom.Position;
 
-public class SearchParams extends JPanel {
-	public SearchParams(LineManager lm, WorldWindowGLCanvas wwd, Balltab bt) {
+public class SearchParamsPanel extends JPanel {
+	public SearchParamsPanel(LineManager lm, WorldWindowGLCanvas wwd, Balltab bt) {
 		this.lm = lm;
 		this.wwd = wwd;
 				
@@ -68,7 +68,7 @@ public class SearchParams extends JPanel {
             		Position pos = bt.getBalltabPostion();
 					if(pos != null)
 					{
-						System.out.println("set lat lon");
+						//System.out.println("set lat lon");
 						
 						lat_txt.setText(String.format("%7.3f", pos.getLatitude().getDegrees()));
 						lon_txt.setText(String.format("%7.3f", pos.getLongitude().getDegrees()));

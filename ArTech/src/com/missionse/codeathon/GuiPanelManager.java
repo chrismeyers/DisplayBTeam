@@ -1,7 +1,6 @@
 package com.missionse.codeathon;
 
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
@@ -11,7 +10,7 @@ import gov.nasa.worldwind.awt.WorldWindowGLCanvas;
 public class GuiPanelManager extends JPanel {
 	JTabbedPane tabbedPanel = null;
 	LineManager lm = null;
-	SearchParams sp = null;
+	SearchParamsPanel sp = null;
 	
 	public GuiPanelManager(int w, int h, WorldWindowGLCanvas wwd) {		
 		tabbedPanel = new JTabbedPane();
@@ -25,13 +24,13 @@ public class GuiPanelManager extends JPanel {
     	tabbedPanel.addTab("Trails", null, new LinePanel(wwd, lm),
                 "Important Paths");
     	
-    	sp = new SearchParams(lm, wwd, bt);
+    	sp = new SearchParamsPanel(lm, wwd, bt);
     	tabbedPanel.addTab("Parameters", null, sp,
                 "Search Parameters");
     	
-    	NotePanel np = new NotePanel();
-    	tabbedPanel.addTab("Notes", null, np,
-                "Search Notes");
+    	//NotePanel np = new NotePanel();
+    	//tabbedPanel.addTab("Notes", null, np,
+        //        "Search Notes");
     	
     	SearchResultPanel sr = new SearchResultPanel(bt, wwd);
     	tabbedPanel.addTab("Search Entry", null, sr,
@@ -41,6 +40,9 @@ public class GuiPanelManager extends JPanel {
     	tabbedPanel.addTab("Planning Control", null, pp,
                 "Planning Controls");
     	
+    	TeamPlanningPanel tp = new TeamPlanningPanel(wwd);
+    	tabbedPanel.addTab("Team Planning", null, tp,
+                "Team Planning");
 	}
 
 }

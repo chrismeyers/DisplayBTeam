@@ -24,7 +24,7 @@ public class LayerManager {
     	LayerList layers = model.getLayers();
     	for (Layer l : layers)
     	{
-    		System.out.println(l.getName());
+    		//System.out.println(l.getName());
     		if (l.getName() == layerName)
     		{
     			return l;

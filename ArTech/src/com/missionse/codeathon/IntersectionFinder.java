@@ -29,7 +29,7 @@ public class IntersectionFinder {
 	public void calculate()
 	{
 		Iterable<Position> linePositions = this.polyline.getPositions();
-		System.out.println(linePositions);
+		//System.out.println(linePositions);
 		for (Position pos : linePositions)
 		{
 		  for (GridSquare g : grid)
@@ -49,10 +49,10 @@ public class IntersectionFinder {
 				Angle angle = LatLon.greatCircleAzimuth(prev,  pos);
 				double distance = LatLon.ellipsoidalDistance(prev, pos, 
 						this.globe.getEquatorialRadius(), this.globe.getPolarRadius());
-				System.out.println(angle);
-				System.out.println(distance);
+				//System.out.println(angle);
+				//System.out.println(distance);
 				double unit = distance/64;
-				System.out.println(unit);
+				//System.out.println(unit);
 				
 				for (int i = 0; i < 64; i++)
 				{
