@@ -5,9 +5,13 @@ import gov.nasa.worldwind.awt.WorldWindowGLCanvas;
 import gov.nasa.worldwind.geom.Angle;
 import gov.nasa.worldwind.geom.LatLon;
 import gov.nasa.worldwind.geom.Position;
+import gov.nasa.worldwind.layers.IconLayer;
+import gov.nasa.worldwind.layers.RenderableLayer;
 import gov.nasa.worldwind.layers.ViewControlsLayer;
 import gov.nasa.worldwind.layers.ViewControlsSelectListener;
+import gov.nasa.worldwind.util.StatusBar;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 
 import javax.swing.*;
@@ -21,6 +25,8 @@ public class WorldwindMain extends JFrame {
 	GridGenerator gridGenerator = null;
 	
 	GuiPanelManager gui_panel_manager = null;
+	
+	Annotations anno = null;
 	
     public WorldwindMain()
     {
@@ -36,6 +42,8 @@ public class WorldwindMain extends JFrame {
         this.getContentPane().add(wwd, java.awt.BorderLayout.CENTER);
         wwd.setModel(new BasicModel());
         
+        anno = new Annotations(wwd);
+        
     	gui_panel_manager = new GuiPanelManager(w, h, wwd);
     	gui.add(gui_panel_manager);
         
@@ -47,12 +55,16 @@ public class WorldwindMain extends JFrame {
         wwd.addSelectListener(new ViewControlsSelectListener(wwd, viewControlsLayer));
         
         wwd.getView().setEyePosition(new Position(new LatLon(Angle.fromDegrees(38), Angle.fromDegrees(-105)),
-        		20000));
+        		200000));
         
         gridGenerator = new GridGenerator(
         		new Position(new LatLon(Angle.fromDegrees(38), Angle.fromDegrees(-105)), 0),
         		wwd.getModel().getGlobe(),
         		gridLayer);
+        
+        StatusBar statusBar = new StatusBar();
+        statusBar.setEventSource(wwd);
+        this.add(statusBar, BorderLayout.SOUTH);
     }
     
     public LayerManager getLayerManager()
