@@ -2,7 +2,10 @@ package com.missionse.codeathon;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.io.InputStream;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
 import gov.nasa.worldwind.WorldWindow;
@@ -28,18 +31,13 @@ import gov.nasa.worldwindx.examples.util.SlideShowAnnotationController;
 
 public class Annotations implements SelectListener {
 	
-	protected final static String AUDIO = "Audio";
     protected final static String IMAGES = "Images";
 
-    protected final static String ICON_AUDIO = "gov/nasa/worldwindx/examples/images/audioicon-64.png";
     protected final static String ICON_IMAGES = "gov/nasa/worldwindx/examples/images/imageicon-64.png";
 
-    protected final static String AUDIO_PATH_MUSIC = "gov/nasa/worldwindx/examples/data/spacemusic.au";
-
-    protected final static String IMAGE_PATH_MT_ST_HELENS = "gov/nasa/worldwindx/examples/images/MountStHelens.jpg";
-    protected final static String IMAGE_PATH_THE_NUT = "gov/nasa/worldwindx/examples/images/the_nut.jpg";
-    protected final static String IMAGE_PATH_IRELAND = "gov/nasa/worldwindx/examples/images/ireland.jpg";
-    protected final static String IMAGE_PATH_NEW_ZEALAND = "gov/nasa/worldwindx/examples/images/new_zealand.gif";
+    protected final static String IMAGE_PATH_WITNESS1 = "res/images/witness1.jpg";
+    protected final static String IMAGE_PATH_WITNESS2 = "res/images/witness2.jpg";
+    protected final static String IMAGE_PATH_WITNESS3 = "res/images/witness3.jpg";
 
 	protected IconLayer iconLayer = null;
     protected RenderableLayer contentLayer = null;
@@ -80,11 +78,11 @@ public class Annotations implements SelectListener {
         layer.setPickEnabled(true);
 
         WWIcon icon = createIcon(IMAGES, Position.fromDegrees(46.1912, -122.1944, 0), "",
-            java.util.Arrays.asList(IMAGE_PATH_MT_ST_HELENS));
+            java.util.Arrays.asList(IMAGE_PATH_WITNESS1));
         layer.addIcon(icon);
 
         icon = createIcon(IMAGES, Position.fromDegrees(-12, -70, 0), "",
-            java.util.Arrays.asList(IMAGE_PATH_IRELAND, IMAGE_PATH_NEW_ZEALAND, IMAGE_PATH_THE_NUT));
+            java.util.Arrays.asList(IMAGE_PATH_WITNESS2, IMAGE_PATH_WITNESS3));
         layer.addIcon(icon);
 
         return layer;
@@ -113,7 +111,7 @@ public class Annotations implements SelectListener {
             throw new IllegalArgumentException(message);
         }
 
-        String iconPath = (type == AUDIO) ? ICON_AUDIO : ICON_IMAGES;
+        String iconPath = ICON_IMAGES;
 
         UserFacingIcon icon = new UserFacingIcon(iconPath, position);
         icon.setSize(new java.awt.Dimension(64, 64));
