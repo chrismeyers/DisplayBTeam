@@ -44,27 +44,27 @@ public class Probabilities {
             
             if(cell.x > getLastKnownPositionX()){
                 if(cell.x - getLastKnownPositionX() > calMaxTravalDistanceKm()){
-                    cell.isPossible = false;
+                    cell.reachable = false;
                 }
             }
             else{
                 if(getLastKnownPositionX() - cell.x > calMaxTravalDistanceKm()){
-                    cell.isPossible = false;
+                    cell.reachable = false;
                 }
             }
             if(cell.y > getLastKnownPositionY()){
                 if(cell.y - getLastKnownPositionY() > calMaxTravalDistanceKm()){
-                    cell.isPossible = false;
+                    cell.reachable = false;
                 }
             }
             else{
                 if(getLastKnownPositionY() - cell.y > calMaxTravalDistanceKm()){
-                    cell.isPossible = false;
+                    cell.reachable = false;
                 }
             }
             
             
-            if(cell.isPossible){
+            if(cell.reachable){
                 grid.add(cell);
             }
         }
@@ -74,7 +74,7 @@ public class Probabilities {
     void calCellValues(ArrayList<GridSquare> cells){ 
         for(GridSquare currentCell : cells){
             
-            if(false == currentCell.isPossible){
+            if(false == currentCell.reachable){
                 break;
             }
             
@@ -85,7 +85,7 @@ public class Probabilities {
                     }
                     
                     for(GridSquare checkCell : cells){
-                        if(currentCell.x-i == checkCell.x && currentCell.y-j == checkCell.y && checkCell.HasPath){
+                        if(currentCell.x-i == checkCell.x && currentCell.y-j == checkCell.y && checkCell.hasPath){
                             currentCell.numLines++;
                         }
                     }

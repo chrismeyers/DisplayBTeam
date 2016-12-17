@@ -10,6 +10,7 @@ public class GridLayer {
 	
 	private RenderableLayer gridLayer = null;
 	private LayerManager layerManager = null;
+	private GridGenerator gridGenerator = null;
 	
 	public GridLayer(LayerManager layerManager)
 	{
@@ -30,5 +31,14 @@ public class GridLayer {
         return new SurfaceSquare(position, 1000);
 	}
 	
+	public void setGridGenerator(GridGenerator gridGenerator)
+	{
+		this.gridGenerator = gridGenerator;
+	}
+	
+	public GridGenerator getGridGenerator()
+	{
+		return this.gridGenerator;
+	}
 
 }

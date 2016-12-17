@@ -63,7 +63,7 @@ public class IntersectionFinder {
 					//System.out.println(point);
 					for (GridSquare g : grid)
 					{
-						if (!g.isHasPath())
+						if (!g.hasPath())
 						{
 						  g.setHasPath(WWMath.isLocationInside(point, g.getSquare().getLocations(this.globe)));
 						}
