@@ -1,6 +1,7 @@
 package com.missionse.codeathon;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -9,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -19,7 +21,11 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.TitledBorder;
 
 import gov.nasa.worldwind.WorldWindow;
+import gov.nasa.worldwind.geom.Angle;
+import gov.nasa.worldwind.geom.LatLon;
 import gov.nasa.worldwind.geom.Position;
+import gov.nasa.worldwind.render.Polyline;
+
 import com.missionse.codeathon.LineManager;
 
 public class LinePanel extends JPanel
@@ -90,6 +96,14 @@ public class LinePanel extends JPanel
                 pauseButton.setText("Pause");
                 endButton.setEnabled(false);
                 ((Component) wwd).setCursor(Cursor.getDefaultCursor());
+                
+                GridLayer gridLayer = new GridLayer(new LayerManager(wwd.getModel()));
+                GridGenerator gridGenerator = new GridGenerator(
+                		new Position(new LatLon(Angle.fromDegrees(38), Angle.fromDegrees(-105)), 0),
+                		wwd.getModel().getGlobe(),
+                		gridLayer);
+        		
+                IntersectionFinder f = new IntersectionFinder(gridGenerator.getGridSquares(), lm.getLine(), wwd.getModel().getGlobe());
             }
         });
         buttonPanel.add(endButton);

@@ -64,7 +64,7 @@ public class WorldwindMain extends JFrame {
         statusBar.setEventSource(wwd);
         add(statusBar, BorderLayout.SOUTH);
         
-        IntersectionTest intersectionTest = new IntersectionTest(this.gridGenerator, this.wwd.getModel().getGlobe(), this.gridLayer);
+        //IntersectionTest intersectionTest = new IntersectionTest(this.gridGenerator, this.wwd.getModel().getGlobe(), this.gridLayer);
     
         gridHighlighter = new GridHighlighter(wwd, gridGenerator);
     }
