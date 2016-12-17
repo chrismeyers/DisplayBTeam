@@ -28,7 +28,7 @@ public class GuiPanelManager extends JPanel {
     	tabbedPanel.addTab("Parameters", null, sp,
                 "Search Parameters");
     	
-    	//NotePanel np = new NotePanel();
+    	//NotePanel np = new NotePanel(bt, wwd);
     	//tabbedPanel.addTab("Notes", null, np,
         //        "Search Notes");
     	
