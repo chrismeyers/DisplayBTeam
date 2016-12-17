@@ -1,5 +1,7 @@
 package com.missionse.codeathon;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
@@ -20,6 +22,7 @@ public class LineManager  extends AVListImpl {
     private final RenderableLayer layer;
     private final Polyline line;
     private boolean active = false;
+    private Position balltabPos; 
     
 	public LineManager(final WorldWindow wwd, RenderableLayer lineLayer, Polyline polyline) {
 		this.wwd = wwd;
@@ -41,7 +44,9 @@ public class LineManager  extends AVListImpl {
         {
             public void mousePressed(MouseEvent mouseEvent)
             {
-                if (armed && mouseEvent.getButton() == MouseEvent.BUTTON1)
+            	updateBalltabPosition();
+                
+            	if (armed && mouseEvent.getButton() == MouseEvent.BUTTON1)
                 {
                     if (armed && (mouseEvent.getModifiersEx() & MouseEvent.BUTTON1_DOWN_MASK) != 0)
                     {
@@ -107,6 +112,20 @@ public class LineManager  extends AVListImpl {
         });
 	}
 	
+	private void updateBalltabPosition()
+	{
+		Position curPos = this.wwd.getCurrentPosition();
+		if(curPos != null)
+		{
+			balltabPos = curPos;
+		}
+	}
+	
+	public Position getBalltabPostion()
+	{
+		return balltabPos;
+	}
+	
 	/**
      * Returns the layer holding the polyline being created.
      *
@@ -166,7 +185,7 @@ public class LineManager  extends AVListImpl {
         this.positions.add(curPos);
         this.line.setPositions(this.positions);
         this.firePropertyChange("LineManager.AddPosition", null, curPos);
-        this.wwd.redraw();
+        this.wwd.redraw();        
     }
 
     private void replacePosition()
