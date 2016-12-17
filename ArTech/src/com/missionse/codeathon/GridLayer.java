@@ -1,22 +1,29 @@
 package com.missionse.codeathon;
 
+import java.util.ArrayList;
+
 import gov.nasa.worldwind.geom.Angle;
 import gov.nasa.worldwind.geom.LatLon;
+import gov.nasa.worldwind.layers.MarkerLayer;
 import gov.nasa.worldwind.layers.RenderableLayer;
 import gov.nasa.worldwind.render.Renderable;
 import gov.nasa.worldwind.render.SurfaceSquare;
+import gov.nasa.worldwind.render.markers.Marker;
 
 public class GridLayer {
 	
 	private RenderableLayer gridLayer = null;
 	private LayerManager layerManager = null;
 	private GridGenerator gridGenerator = null;
+	private MarkerLayer markerLayer = null;
 	
 	public GridLayer(LayerManager layerManager)
 	{
 		this.layerManager = layerManager;
 		this.gridLayer = new RenderableLayer();
-		this.gridLayer.addRenderable(createSquare());
+		this.markerLayer = new MarkerLayer();
+		
+		this.layerManager.addLayer(this.markerLayer);;
 		this.layerManager.addLayer(this.gridLayer);
 	}
 	
@@ -25,10 +32,9 @@ public class GridLayer {
 		this.gridLayer.addRenderable(shape);
 	}
 	
-	public SurfaceSquare createSquare()
+	public void addMarker(ArrayList<Marker> marker)
 	{
-        LatLon position = new LatLon(Angle.fromDegrees(38), Angle.fromDegrees(-105));
-        return new SurfaceSquare(position, 1000);
+		this.markerLayer.setMarkers(marker);
 	}
 	
 	public void setGridGenerator(GridGenerator gridGenerator)

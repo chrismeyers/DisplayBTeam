@@ -58,6 +58,8 @@ public class WorldwindMain extends JFrame {
         StatusBar statusBar = new StatusBar();
         statusBar.setEventSource(wwd);
         add(statusBar, BorderLayout.SOUTH);
+        
+        this.wwd.getSceneController().setVerticalExaggeration(8d);
     }
     
     public LayerManager getLayerManager()
