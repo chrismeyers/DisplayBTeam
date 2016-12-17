@@ -39,7 +39,6 @@ public class GridGenerator {
 			double dist = (180*i*1000) / Math.PI / globe.getRadius();
 			LatLon point = LatLon.greatCircleEndPosition(row, Angle.fromDegrees(90),
 					Angle.fromDegrees(dist));
-			String name = "X" + String.valueOf(i);
 			GridSquare square = new GridSquare(point, i, j);
 			gridLayer.addShape(square.getSquare());		
 			grid.add(square);
@@ -56,4 +55,10 @@ public class GridGenerator {
 		  
 		}
 	}
+	
+	public ArrayList<GridSquare> getGridSquares()
+	{
+		return this.grid;
+	}
+	
 }

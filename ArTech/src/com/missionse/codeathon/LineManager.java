@@ -1,5 +1,6 @@
 package com.missionse.codeathon;
 
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
@@ -36,6 +37,8 @@ public class LineManager  extends AVListImpl {
             this.line = new Polyline();
             this.line.setFollowTerrain(true);
         }
+        line.setColor(Color.YELLOW);
+        
         this.layer = lineLayer != null ? lineLayer : new RenderableLayer();
         this.layer.addRenderable(this.line);
         this.wwd.getModel().getLayers().add(this.layer);

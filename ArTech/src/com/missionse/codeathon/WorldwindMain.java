@@ -19,7 +19,7 @@ public class WorldwindMain extends JFrame {
 	JPanel gui = null;
 	GridLayer gridLayer = null;
 	GridGenerator gridGenerator = null;
-	
+	GridHighlighter gridHighlighter = null;
 	GuiPanelManager gui_panel_manager = null;
 	
     public WorldwindMain()
@@ -46,13 +46,17 @@ public class WorldwindMain extends JFrame {
         layerManager.addLayer(viewControlsLayer);
         wwd.addSelectListener(new ViewControlsSelectListener(wwd, viewControlsLayer));
         
-        wwd.getView().setEyePosition(new Position(new LatLon(Angle.fromDegrees(38), Angle.fromDegrees(-105)),
-        		20000));
+        this.wwd.getView().setEyePosition(new Position(new LatLon(Angle.fromDegrees(38), Angle.fromDegrees(-105)),
+                40000));
         
-        gridGenerator = new GridGenerator(
-        		new Position(new LatLon(Angle.fromDegrees(38), Angle.fromDegrees(-105)), 0),
-        		wwd.getModel().getGlobe(),
-        		gridLayer);
+        this.gridGenerator = new GridGenerator(
+                new Position(new LatLon(Angle.fromDegrees(38), Angle.fromDegrees(-105)), 0),
+                this.wwd.getModel().getGlobe(),
+                this.gridLayer);
+        
+        IntersectionTest intersectionTest = new IntersectionTest(this.gridGenerator, this.wwd.getModel().getGlobe(), this.gridLayer);
+    
+        this.gridHighlighter = new GridHighlighter(this.wwd, this.gridGenerator);
     }
     
     public LayerManager getLayerManager()

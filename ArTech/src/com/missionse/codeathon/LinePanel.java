@@ -98,7 +98,7 @@ public class LinePanel extends JPanel
         JPanel pointPanel = new JPanel(new GridLayout(0, 1, 0, 10));
         pointPanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 
-        this.pointLabels = new JLabel[20];
+        this.pointLabels = new JLabel[10];
         for (int i = 0; i < this.pointLabels.length; i++)
         {
             this.pointLabels[i] = new JLabel("");
@@ -131,7 +131,7 @@ public class LinePanel extends JPanel
         for (Position pos : lm.getLine().getPositions())
         {
             if (i == this.pointLabels.length)
-                break;
+               break;
 
             String las = String.format("Lat %7.4f\u00B0", pos.getLatitude().getDegrees());
             String los = String.format("Lon %7.4f\u00B0", pos.getLongitude().getDegrees());
