@@ -36,6 +36,11 @@ public class GuiPanelManager extends JPanel {
     	SearchResultPanel sr = new SearchResultPanel(bt, wwd);
     	tabbedPanel.addTab("Search Entry", null, sr,
                 "Search Result Entry");
+    	
+    	PlaybackPanel pp = new PlaybackPanel(wwd);
+    	tabbedPanel.addTab("Planning Control", null, pp,
+                "Planning Controls");
+    	
 	}
 
 }
