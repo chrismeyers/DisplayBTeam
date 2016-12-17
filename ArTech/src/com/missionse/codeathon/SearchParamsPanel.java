@@ -83,6 +83,13 @@ public class SearchParamsPanel extends JPanel {
 							gridGenerator = new GridGenerator(pos, wwd.getModel().getGlobe(), gridLayer);
 							gridLayer.setGridGenerator(gridGenerator);
 						}
+						else
+						{
+							gridLayer.clearGrid();
+							gridGenerator.updatePosition(pos);
+							gridGenerator.generateGrid();
+							gridLayer.setGridGenerator(gridGenerator);
+						}
 					}
 				}
             }

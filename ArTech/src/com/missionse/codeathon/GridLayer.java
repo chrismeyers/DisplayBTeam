@@ -40,5 +40,10 @@ public class GridLayer {
 	{
 		return this.gridGenerator;
 	}
+	
+	public void clearGrid()
+	{
+		this.gridLayer.removeAllRenderables();
+	}
 
 }
